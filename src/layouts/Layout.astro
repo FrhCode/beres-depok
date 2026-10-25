@@ -20,6 +20,9 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#183e3b" />
+    <script is:inline>
+      document.documentElement.classList.add("js-reveal");
+    </script>
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,5 +34,51 @@ const {
   <body>
     <a class="skip-link" href="#main">Lewati ke konten</a>
     <slot />
+    <script>
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const revealTargets = document.querySelectorAll("[data-reveal]");
+
+      if (!("IntersectionObserver" in window) || reduceMotion.matches) {
+        revealTargets.forEach((el) => el.classList.add("is-revealed"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              entry.target.classList.add("is-revealed");
+              observer.unobserve(entry.target);
+            }
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0 },
+        );
+
+        revealTargets.forEach((el) => observer.observe(el));
+      }
+
+      const heroPhotoImg = document.querySelector(".hero-photo img");
+      const wideViewport = window.matchMedia("(min-width: 1200px)");
+      let frame = 0;
+
+      const updateOnScroll = () => {
+        frame = 0;
+        const y = window.scrollY;
+
+        if (heroPhotoImg && wideViewport.matches && !reduceMotion.matches) {
+          heroPhotoImg.style.transform = `translate3d(0, ${Math.min(y * 0.1, 50)}px, 0)`;
+        } else if (heroPhotoImg) {
+          heroPhotoImg.style.transform = "";
+        }
+      };
+
+      updateOnScroll();
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!frame) frame = requestAnimationFrame(updateOnScroll);
+        },
+        { passive: true },
+      );
+      window.addEventListener("resize", updateOnScroll);
+    </script>
   </body>
 </html>

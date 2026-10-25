@@ -2,12 +2,13 @@
 interface Props {
   question: string;
   answer: string;
+  revealDelay?: number;
 }
 
-const { question, answer } = Astro.props;
+const { question, answer, revealDelay = 0 } = Astro.props;
 ---
 
-<div class="faq-row">
+<div class="faq-row" data-reveal style={`--reveal-delay:${revealDelay}ms`}>
   <h3 class="faq-question">{question}</h3>
   <p class="faq-answer">{answer}</p>
 </div>

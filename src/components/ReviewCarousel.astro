@@ -4,14 +4,14 @@ import { reviews } from "../lib/site";
 
 <section class="reviews" id="ulasan" aria-labelledby="reviews-heading">
   <div class="shell">
-    <div class="reviews-head">
+    <div class="reviews-head" data-reveal>
       <h2 id="reviews-heading" class="reviews-heading">
         Yang terasa,<br />setelah beres.
       </h2>
       <p class="reviews-intro">Cerita dari rumah<br />yang kembali nyaman.</p>
     </div>
 
-    <div class="carousel" data-carousel>
+    <div class="carousel" data-carousel data-reveal style="--reveal-delay:90ms">
       <div class="slides">
         {
           reviews.map((review, i) => (

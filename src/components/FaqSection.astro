@@ -5,11 +5,17 @@ import { faqs } from "../lib/site";
 
 <section class="faq" id="faq" aria-labelledby="faq-heading">
   <div class="shell">
-    <h2 id="faq-heading" class="faq-heading">Masih ada pertanyaan?</h2>
+    <h2 id="faq-heading" class="faq-heading" data-reveal>
+      Masih ada pertanyaan?
+    </h2>
     <div class="faq-list">
       {
-        faqs.map((item) => (
-          <FaqRow question={item.question} answer={item.answer} />
+        faqs.map((item, i) => (
+          <FaqRow
+            question={item.question}
+            answer={item.answer}
+            revealDelay={Math.min(i, 3) * 70}
+          />
         ))
       }
     </div>

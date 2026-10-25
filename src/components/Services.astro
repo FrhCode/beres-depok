@@ -6,15 +6,19 @@ import { services, site } from "../lib/site";
 <section class="services" id="layanan" aria-labelledby="services-heading">
   <div class="shell">
     <div class="services-inner">
-      <h2 id="services-heading" class="services-heading">
+      <h2 id="services-heading" class="services-heading" data-reveal>
         Apa yang AC Anda butuhkan?
       </h2>
-      <p class="services-supporting">
+      <p
+        class="services-supporting"
+        data-reveal
+        style="--reveal-delay:70ms"
+      >
         Dari perawatan rutin sampai pemasangan baru.
       </p>
       <div class="services-grid">
         {
-          services.map((service) => (
+          services.map((service, i) => (
             <ServiceItem
               title={service.title}
               description={service.description}
@@ -22,6 +26,7 @@ import { services, site } from "../lib/site";
               image={service.image}
               alt={service.alt}
               href={site.whatsappUrl}
+              revealDelay={i * 90}
             />
           ))
         }

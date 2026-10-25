@@ -6,12 +6,18 @@ interface Props {
   image: string;
   alt: string;
   href: string;
+  revealDelay?: number;
 }
 
-const { title, description, cta, image, alt, href } = Astro.props;
+const { title, description, cta, image, alt, href, revealDelay = 0 } =
+  Astro.props;
 ---
 
-<article class="service">
+<article
+  class="service"
+  data-reveal
+  style={`--reveal-delay:${revealDelay}ms`}
+>
   <figure class="service-photo">
     <img src={image} alt={alt} width="832" height="436" loading="lazy" />
   </figure>
@@ -26,12 +32,24 @@ const { title, description, cta, image, alt, href } = Astro.props;
 </article>
 
 <style>
+  .service-photo {
+    border-radius: var(--radius-photo);
+    overflow: hidden;
+    background: var(--bg-review);
+  }
+
   .service-photo img {
+    display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 416 / 218;
     border-radius: var(--radius-photo);
     object-fit: cover;
+    transition: transform 600ms var(--ease-out);
+  }
+
+  .service:hover .service-photo img {
+    transform: scale(1.03);
   }
 
   .service-title {
@@ -75,6 +93,11 @@ const { title, description, cta, image, alt, href } = Astro.props;
 
   .service-link .arrow {
     line-height: 1;
+    transition: transform 200ms var(--ease);
+  }
+
+  .service-link:hover .arrow {
+    transform: translate(2px, -2px);
   }
 
   @media (max-width: 767px) {

@@ -51,16 +51,33 @@ import { navigation } from "../lib/site";
   }
 
   .nav a {
+    position: relative;
     display: inline-flex;
     align-items: center;
     min-height: 44px;
     white-space: nowrap;
   }
 
+  .nav a::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 10px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 240ms var(--ease);
+  }
+
   .nav a:hover {
     color: var(--text-primary);
-    text-decoration: underline;
-    text-underline-offset: 4px;
+  }
+
+  .nav a:hover::after,
+  .nav a:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 
   .nav a:focus-visible {
