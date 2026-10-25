@@ -1,0 +1,229 @@
+---
+import { site } from "../lib/site";
+
+const footerNav = [
+  { label: "Layanan AC", href: "#layanan" },
+  { label: "Area layanan", href: "#area" },
+  { label: "Ulasan", href: "#ulasan" },
+  { label: "FAQ", href: "#faq" },
+];
+---
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img
+          src="/images/logo.svg"
+          alt="Beres Depok"
+          width="228"
+          height="72"
+          loading="lazy"
+        />
+        <p class="footer-description">
+          Cuci, perbaikan, dan pemasangan AC.<br />
+          Untuk rumah yang nyaman di Depok.
+        </p>
+      </div>
+
+      <div class="footer-contact">
+        <h2 class="footer-heading">Hubungi Beres Depok</h2>
+        <dl class="contact-list">
+          <div class="contact-row">
+            <dt>Alamat</dt>
+            <dd>{site.address}</dd>
+          </div>
+          <div class="contact-row">
+            <dt>WhatsApp</dt>
+            <dd>{site.phoneDisplay}</dd>
+          </div>
+          <div class="contact-row">
+            <dt>Email</dt>
+            <dd>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </dd>
+          </div>
+          <div class="contact-row">
+            <dt>Jam layanan</dt>
+            <dd>{site.hours}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <nav class="footer-nav" aria-labelledby="footer-nav-heading">
+        <h2 id="footer-nav-heading" class="footer-heading">Jelajahi</h2>
+        <ul class="footer-links">
+          {
+            footerNav.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-legal">
+      <p>© 2026 Beres Depok</p>
+      <p>{site.serviceArea}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: 62px 43px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 544fr 520fr 216fr;
+  }
+
+  .footer-brand img {
+    width: 228px;
+    height: 72px;
+  }
+
+  .footer-description {
+    margin-top: 29px;
+    max-width: 410px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  .footer-contact,
+  .footer-nav {
+    padding-top: 20px;
+  }
+
+  .footer-heading {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .contact-list {
+    display: grid;
+    row-gap: 30px;
+    margin: 29px 0 0;
+  }
+
+  .contact-row {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: start;
+  }
+
+  .contact-row dt {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-secondary);
+  }
+
+  .contact-row dd {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 29px;
+  }
+
+  .footer-links li {
+    line-height: 1.2;
+  }
+
+  .footer-links a {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .footer-links a:hover,
+  .contact-row dd a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .footer-legal {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 66px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 1199px) {
+    .footer-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 40px;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+
+    .footer-contact,
+    .footer-nav {
+      padding-top: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .site-footer {
+      padding-block: 48px 32px;
+    }
+
+    .footer-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 36px;
+    }
+
+    .footer-brand {
+      grid-column: auto;
+    }
+
+    .footer-description {
+      margin-top: 20px;
+    }
+
+    .contact-row {
+      grid-template-columns: 100px minmax(0, 1fr);
+      column-gap: 16px;
+    }
+
+    .contact-list,
+    .footer-links {
+      margin-top: 20px;
+      row-gap: 20px;
+      gap: 20px;
+    }
+
+    .footer-legal {
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 40px;
+      padding-top: 24px;
+    }
+  }
+</style>

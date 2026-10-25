@@ -1,0 +1,116 @@
+---
+import ServiceItem from "./ServiceItem.astro";
+import { services, site } from "../lib/site";
+---
+
+<section class="services" id="layanan" aria-labelledby="services-heading">
+  <div class="shell">
+    <div class="services-inner">
+      <h2 id="services-heading" class="services-heading">
+        Apa yang AC Anda butuhkan?
+      </h2>
+      <p class="services-supporting">
+        Dari perawatan rutin sampai pemasangan baru.
+      </p>
+      <div class="services-grid">
+        {
+          services.map((service) => (
+            <ServiceItem
+              title={service.title}
+              description={service.description}
+              cta={service.cta}
+              image={service.image}
+              alt={service.alt}
+              href={site.whatsappUrl}
+            />
+          ))
+        }
+      </div>
+      <p class="price-note">
+        Tanyakan biaya pengecekan, jasa, dan material melalui WhatsApp sebelum
+        kunjungan.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding-bottom: 133px;
+  }
+
+  .services-inner {
+    padding-top: 58px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .services-heading {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .services-supporting {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-secondary);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 37px;
+  }
+
+  .price-note {
+    margin-top: 58px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-note);
+  }
+
+  @media (max-width: 1199px) {
+    .services {
+      padding-bottom: 96px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 40px 24px;
+    }
+
+    .price-note {
+      margin-top: 48px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .services {
+      padding-bottom: 72px;
+    }
+
+    .services-inner {
+      padding-top: 48px;
+    }
+
+    .services-heading {
+      font-size: 30px;
+    }
+
+    .services-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+      margin-top: 32px;
+    }
+
+    .price-note {
+      margin-top: 40px;
+      font-size: 13px;
+    }
+  }
+</style>

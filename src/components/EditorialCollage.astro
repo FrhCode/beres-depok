@@ -1,0 +1,196 @@
+---
+---
+
+<section class="collage" aria-labelledby="collage-heading">
+  <div class="shell">
+    <div class="collage-grid">
+      <figure class="c-hands">
+        <img
+          src="/images/collage-hands.webp"
+          alt="Tangan teknisi memeriksa komponen kelistrikan unit AC."
+          width="576"
+          height="720"
+          loading="lazy"
+        />
+      </figure>
+
+      <h2 id="collage-heading" class="c-statement">
+        Di balik<br />rasa nyaman,<br />ada detail.
+      </h2>
+
+      <figure class="c-nyaman">
+        <img
+          src="/images/collage-nyaman.webp"
+          alt="Ruang keluarga bernuansa putih dengan sofa dan tangga kayu."
+          width="832"
+          height="1248"
+          loading="lazy"
+        />
+      </figure>
+
+      <figure class="c-komponen">
+        <img
+          src="/images/collage-komponen.webp"
+          alt="Teknisi mengukur papan sirkuit AC menggunakan multimeter."
+          width="1680"
+          height="720"
+          loading="lazy"
+        />
+      </figure>
+
+      <p class="c-closing">Untuk rumah yang kembali nyaman.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .collage {
+    padding-bottom: 222px;
+  }
+
+  .collage-grid {
+    display: grid;
+    grid-template-columns: 288fr 480fr 416fr;
+    column-gap: 48px;
+    row-gap: 48px;
+    grid-auto-rows: 360px;
+  }
+
+  .collage-grid figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .c-hands {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .c-statement {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 54px;
+    font-size: clamp(48px, 4.17vw, 60px);
+    font-weight: 500;
+    line-height: 1.08;
+    color: var(--text-primary);
+  }
+
+  .c-nyaman {
+    grid-column: 3;
+    grid-row: 1;
+    height: 624px;
+  }
+
+  .c-komponen {
+    grid-column: 1 / 3;
+    grid-row: 2;
+    width: calc(100% + 24px);
+  }
+
+  .c-closing {
+    grid-column: 3;
+    grid-row: 2;
+    margin-top: 260px;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 1199px) {
+    .collage {
+      padding-bottom: 120px;
+    }
+
+    .collage-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto;
+      gap: 32px;
+    }
+
+    .c-hands {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .c-hands img {
+      aspect-ratio: 4 / 5;
+    }
+
+    .c-statement {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: center;
+      margin-top: 0;
+      font-size: 48px;
+    }
+
+    .c-nyaman {
+      grid-column: 1;
+      grid-row: 2;
+      height: auto;
+    }
+
+    .c-nyaman img {
+      aspect-ratio: 2 / 3;
+    }
+
+    .c-komponen {
+      grid-column: 2;
+      grid-row: 2;
+      width: auto;
+      height: 100%;
+    }
+
+    .c-closing {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .collage {
+      padding-bottom: 88px;
+    }
+
+    .collage-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+    }
+
+    .c-hands {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .c-statement {
+      grid-column: 1;
+      grid-row: auto;
+      font-size: 36px;
+    }
+
+    .c-nyaman {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .c-komponen {
+      grid-column: 1;
+      grid-row: auto;
+      height: auto;
+    }
+
+    .c-komponen img {
+      aspect-ratio: 7 / 3;
+    }
+
+    .c-closing {
+      grid-column: 1;
+      grid-row: auto;
+      margin-top: 0;
+    }
+  }
+</style>

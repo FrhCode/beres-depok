@@ -1,0 +1,85 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  cta: string;
+  image: string;
+  alt: string;
+  href: string;
+}
+
+const { title, description, cta, image, alt, href } = Astro.props;
+---
+
+<article class="service">
+  <figure class="service-photo">
+    <img src={image} alt={alt} width="832" height="436" loading="lazy" />
+  </figure>
+  <h3 class="service-title">{title}</h3>
+  <p class="service-description">{description}</p>
+  <div class="service-divider" aria-hidden="true"></div>
+  <a class="service-link" href={href} target="_blank" rel="noopener">
+    <span>{cta}</span>
+    <span class="arrow" aria-hidden="true">↗</span>
+    <span class="sr-only">(membuka WhatsApp di tab baru)</span>
+  </a>
+</article>
+
+<style>
+  .service-photo img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 416 / 218;
+    border-radius: var(--radius-photo);
+    object-fit: cover;
+  }
+
+  .service-title {
+    margin-top: 28px;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .service-description {
+    margin-top: 17px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-secondary);
+  }
+
+  .service-divider {
+    height: 1px;
+    margin-top: 33px;
+    background: var(--border-subtle);
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .service-link:hover span:first-child {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .service-link .arrow {
+    line-height: 1;
+  }
+
+  @media (max-width: 767px) {
+    .service-title {
+      margin-top: 24px;
+    }
+  }
+</style>

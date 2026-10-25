@@ -1,0 +1,555 @@
+---
+import { reviews } from "../lib/site";
+---
+
+<section class="reviews" id="ulasan" aria-labelledby="reviews-heading">
+  <div class="shell">
+    <div class="reviews-head">
+      <h2 id="reviews-heading" class="reviews-heading">
+        Yang terasa,<br />setelah beres.
+      </h2>
+      <p class="reviews-intro">Cerita dari rumah<br />yang kembali nyaman.</p>
+    </div>
+
+    <div class="carousel" data-carousel>
+      <div class="slides">
+        {
+          reviews.map((review, i) => (
+            <div
+              class:list={["review-slide", { "is-active": i === 0 }]}
+              data-slide={i}
+              data-label={`Ulasan ${i + 1} dari ${reviews.length}: ${review.name}, ${review.area}`}
+              aria-hidden={i === 0 ? undefined : "true"}
+              inert={i === 0 ? undefined : true}
+            >
+              <figure class="review-featured">
+                <div class="stars" aria-hidden="true">★★★★★</div>
+                <span class="sr-only">5 dari 5 bintang</span>
+                <blockquote class="quote">
+                  <p>“{review.quote}”</p>
+                </blockquote>
+                <figcaption class="review-name">
+                  {review.name}
+                  <span class="dot" aria-hidden="true">·</span>
+                  <span class="review-area">{review.area}</span>
+                </figcaption>
+              </figure>
+
+              <div class="review-preview" aria-hidden="true">
+                <div class="stars stars-preview">★★★★★</div>
+                <p class="preview-quote">{review.preview}</p>
+                <p class="preview-name">{review.previewName}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="controls">
+        <div class="track" aria-hidden="true">
+          <span class="track-fill" data-track-fill></span>
+        </div>
+        <div class="buttons">
+          <button
+            class="ctrl pause"
+            type="button"
+            data-pause
+            aria-label="Jeda ulasan"
+          >
+            <span class="pause-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </span>
+            <span class="pause-text" data-pause-text>Jeda</span>
+          </button>
+          <button
+            class="ctrl arrow-btn prev"
+            type="button"
+            data-prev
+            aria-label="Ulasan sebelumnya"
+          >
+            <span aria-hidden="true">←</span>
+          </button>
+          <button
+            class="ctrl arrow-btn next"
+            type="button"
+            data-next
+            aria-label="Ulasan berikutnya"
+          >
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="sr-only" aria-live="polite" data-live></p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews {
+    padding-block: 62px 91px;
+    background: var(--bg-inverse);
+    color: var(--text-inverse);
+  }
+
+  .reviews-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .reviews-heading {
+    font-size: 55px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .reviews-intro {
+    width: 240px;
+    margin-top: 30px;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-inverse-muted);
+  }
+
+  .slides {
+    display: grid;
+    margin-top: 46px;
+    margin-right: calc(var(--gutter) * -1);
+  }
+
+  .review-slide {
+    grid-area: 1 / 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 328px;
+    gap: 32px;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 350ms var(--ease),
+      visibility 0s linear 350ms;
+  }
+
+  .review-slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 350ms var(--ease),
+      visibility 0s linear 0s;
+  }
+
+  .review-featured {
+    display: flex;
+    flex-direction: column;
+    height: 370px;
+    padding: 38px 40px 42px;
+    border-radius: 4px;
+    background: var(--bg-review);
+    color: var(--text-primary);
+  }
+
+  .stars {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    color: var(--rating);
+  }
+
+  .quote {
+    margin-top: 24px;
+    max-width: 912px;
+    font-family: var(--font-heading);
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--text-primary);
+  }
+
+  .review-name {
+    margin-top: auto;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .review-name .dot {
+    margin-inline: 6px;
+  }
+
+  .review-name .review-area {
+    font-weight: 600;
+  }
+
+  .review-preview {
+    display: flex;
+    flex-direction: column;
+    height: 370px;
+    padding: 38px 32px 42px;
+    border-radius: 4px;
+    background: var(--bg-inverse-raised);
+    color: var(--text-inverse);
+  }
+
+  .stars-preview {
+    font-size: 18px;
+    color: var(--rating-inverse);
+  }
+
+  .preview-quote {
+    margin-top: 34px;
+    max-width: 258px;
+    font-family: var(--font-heading);
+    font-size: 29px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--text-inverse);
+    white-space: pre-line;
+  }
+
+  .preview-name {
+    margin-top: auto;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-inverse-muted);
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 41px;
+  }
+
+  .track {
+    position: relative;
+    flex: 1;
+    max-width: 920px;
+    height: 2px;
+    background: var(--progress-track);
+    overflow: hidden;
+  }
+
+  .track-fill {
+    display: block;
+    width: 33.3333%;
+    height: 100%;
+    background: var(--accent-soft);
+    transition: transform 350ms var(--ease);
+  }
+
+  .buttons {
+    display: flex;
+    gap: 24px;
+    margin-left: auto;
+  }
+
+  .ctrl {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 58px;
+    border: 0;
+    border-radius: 29px;
+    background: var(--bg-inverse-raised);
+    color: var(--text-inverse);
+    transition: background-color 160ms var(--ease);
+  }
+
+  .ctrl:focus-visible {
+    outline: 2px solid var(--accent-soft);
+    outline-offset: 3px;
+  }
+
+  .pause {
+    width: 120px;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .pause:hover,
+  .prev:hover {
+    background: #355c54;
+  }
+
+  .pause-icon {
+    display: inline-flex;
+    gap: 4px;
+    height: 16px;
+  }
+
+  .pause-icon span {
+    display: block;
+    width: 3px;
+    height: 16px;
+    border-radius: 1px;
+    background: currentColor;
+  }
+
+  .ctrl[data-paused="true"] .pause-icon span:first-child {
+    width: 12px;
+    height: 14px;
+    border: 0;
+    border-radius: 0;
+    background: currentColor;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+
+  .ctrl[data-paused="true"] .pause-icon span:last-child {
+    display: none;
+  }
+
+  .arrow-btn {
+    width: 76px;
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  .next {
+    background: var(--accent-soft);
+    color: var(--text-primary);
+  }
+
+  .next:focus-visible {
+    outline-color: var(--text-primary);
+  }
+
+  .next:hover {
+    background: #c2cfa0;
+  }
+
+  @media (max-width: 1199px) {
+    .reviews {
+      padding-block: 56px 72px;
+    }
+
+    .reviews-heading {
+      font-size: 44px;
+    }
+
+    .slides {
+      margin-right: 0;
+    }
+
+    .review-slide {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .review-preview {
+      display: none;
+    }
+
+    .review-featured {
+      height: auto;
+      min-height: 320px;
+    }
+
+    .quote {
+      font-size: 30px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .reviews {
+      padding-block: 48px 64px;
+    }
+
+    .reviews-head {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .reviews-heading {
+      font-size: 34px;
+    }
+
+    .reviews-intro {
+      width: auto;
+      margin-top: 0;
+      font-size: 15px;
+    }
+
+    .slides {
+      margin-top: 32px;
+    }
+
+    .review-featured {
+      min-height: 0;
+      padding: 28px 24px 32px;
+    }
+
+    .quote {
+      margin-top: 20px;
+      font-size: 26px;
+    }
+
+    .review-name {
+      margin-top: 24px;
+    }
+
+    .controls {
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .track {
+      flex-basis: 100%;
+      max-width: none;
+    }
+
+    .buttons {
+      width: 100%;
+      gap: 16px;
+      margin-left: 0;
+    }
+
+    .pause {
+      flex: 1;
+      width: auto;
+    }
+
+    .arrow-btn {
+      width: 64px;
+      flex: 0 0 64px;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-carousel]");
+
+  if (root) {
+    const slides = Array.from(
+      root.querySelectorAll<HTMLElement>("[data-slide]")
+    );
+    const pauseBtn = root.querySelector<HTMLButtonElement>("[data-pause]");
+    const pauseText = root.querySelector<HTMLElement>("[data-pause-text]");
+    const prevBtn = root.querySelector<HTMLButtonElement>("[data-prev]");
+    const nextBtn = root.querySelector<HTMLButtonElement>("[data-next]");
+    const fill = root.querySelector<HTMLElement>("[data-track-fill]");
+    const live = root.querySelector<HTMLElement>("[data-live]");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const DELAY = 5500;
+
+    let index = 0;
+    let manualPaused = motionQuery.matches;
+    let hoverPaused = false;
+    let focusPaused = false;
+    let timer = 0;
+
+    const canPlay = () =>
+      !manualPaused &&
+      !hoverPaused &&
+      !focusPaused &&
+      !document.hidden;
+
+    function clearTimer() {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = 0;
+      }
+    }
+
+    function schedule() {
+      clearTimer();
+      if (canPlay()) {
+        timer = window.setInterval(() => go(index + 1), DELAY);
+      }
+    }
+
+    function syncPauseButton() {
+      if (!pauseBtn || !pauseText) return;
+      pauseBtn.setAttribute(
+        "aria-label",
+        manualPaused ? "Lanjutkan ulasan" : "Jeda ulasan"
+      );
+      pauseBtn.dataset.paused = manualPaused ? "true" : "false";
+      pauseText.textContent = manualPaused ? "Lanjut" : "Jeda";
+    }
+
+    function go(next: number, manual = false) {
+      index = (next + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        const active = i === index;
+        slide.classList.toggle("is-active", active);
+        if (active) {
+          slide.removeAttribute("inert");
+          slide.removeAttribute("aria-hidden");
+        } else {
+          slide.setAttribute("inert", "");
+          slide.setAttribute("aria-hidden", "true");
+        }
+      });
+
+      if (fill) {
+        fill.style.transform = `translateX(${index * 100}%)`;
+      }
+
+      if (manual && live) {
+        live.textContent = slides[index].dataset.label ?? "";
+      }
+
+      schedule();
+    }
+
+    pauseBtn?.addEventListener("click", () => {
+      manualPaused = !manualPaused;
+      if (!manualPaused) focusPaused = false;
+      syncPauseButton();
+      schedule();
+    });
+
+    prevBtn?.addEventListener("click", () => go(index - 1, true));
+    nextBtn?.addEventListener("click", () => go(index + 1, true));
+
+    root.addEventListener("mouseenter", () => {
+      hoverPaused = true;
+      schedule();
+    });
+
+    root.addEventListener("mouseleave", () => {
+      hoverPaused = false;
+      schedule();
+    });
+
+    root.addEventListener("focusin", () => {
+      if (
+        document.activeElement instanceof HTMLElement &&
+        document.activeElement.matches(":focus-visible")
+      ) {
+        focusPaused = true;
+        schedule();
+      }
+    });
+
+    root.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        go(index - 1, true);
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        go(index + 1, true);
+      }
+    });
+
+    document.addEventListener("visibilitychange", schedule);
+
+    motionQuery.addEventListener("change", (event) => {
+      manualPaused = event.matches;
+      syncPauseButton();
+      schedule();
+    });
+
+    syncPauseButton();
+    schedule();
+  }
+</script>

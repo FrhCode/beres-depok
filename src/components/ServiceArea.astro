@@ -1,0 +1,98 @@
+---
+---
+
+<section class="area" id="area" aria-labelledby="area-heading">
+  <div class="shell">
+    <div class="area-grid">
+      <h2 id="area-heading" class="area-city">Depok.</h2>
+      <div class="area-copy">
+        <p class="area-coverage">Layanan AC untuk rumah Anda di Depok.</p>
+        <p class="area-check">
+          Kirim kecamatan atau titik lokasi melalui WhatsApp untuk mengecek
+          jangkauan dan ketersediaan kunjungan.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .area {
+    padding-block: 86px 123px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .area-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 416px;
+    column-gap: 144px;
+    align-items: start;
+  }
+
+  .area-city {
+    font-size: 104px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .area-copy {
+    padding-top: 19px;
+  }
+
+  .area-coverage {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .area-check {
+    margin-top: 25px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 1199px) {
+    .area {
+      padding-block: 64px 88px;
+    }
+
+    .area-grid {
+      grid-template-columns: minmax(0, 1fr) 320px;
+      column-gap: 48px;
+    }
+
+    .area-city {
+      font-size: 80px;
+    }
+  }
+
+  @media (max-width: 899px) {
+    .area {
+      padding-block: 56px 64px;
+    }
+
+    .area-grid {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 20px;
+    }
+
+    .area-copy {
+      padding-top: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .area-city {
+      font-size: 64px;
+    }
+
+    .area-coverage {
+      font-size: 20px;
+    }
+  }
+</style>

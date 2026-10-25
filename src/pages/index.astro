@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import HeroSection from "../components/HeroSection.astro";
+import Services from "../components/Services.astro";
+import EditorialCollage from "../components/EditorialCollage.astro";
+import ReviewCarousel from "../components/ReviewCarousel.astro";
+import ServiceArea from "../components/ServiceArea.astro";
+import FaqSection from "../components/FaqSection.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<Layout>
+  <SiteHeader />
+  <main id="main">
+    <HeroSection />
+    <Services />
+    <EditorialCollage />
+    <ReviewCarousel />
+    <ServiceArea />
+    <FaqSection />
+  </main>
+  <SiteFooter />
+</Layout>

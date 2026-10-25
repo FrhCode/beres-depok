@@ -1,0 +1,62 @@
+---
+import FaqRow from "./FaqRow.astro";
+import { faqs } from "../lib/site";
+---
+
+<section class="faq" id="faq" aria-labelledby="faq-heading">
+  <div class="shell">
+    <h2 id="faq-heading" class="faq-heading">Masih ada pertanyaan?</h2>
+    <div class="faq-list">
+      {
+        faqs.map((item) => (
+          <FaqRow question={item.question} answer={item.answer} />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    padding-block: 68px 60px;
+  }
+
+  .faq-heading {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .faq-list {
+    margin-top: 60px;
+  }
+
+  @media (max-width: 1199px) {
+    .faq {
+      padding-block: 56px 48px;
+    }
+
+    .faq-heading {
+      font-size: 36px;
+    }
+
+    .faq-list {
+      margin-top: 44px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .faq {
+      padding-block: 48px 40px;
+    }
+
+    .faq-heading {
+      font-size: 30px;
+    }
+
+    .faq-list {
+      margin-top: 32px;
+    }
+  }
+</style>

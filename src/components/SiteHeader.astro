@@ -1,0 +1,106 @@
+---
+import { navigation } from "../lib/site";
+---
+
+<header class="site-header">
+  <div class="shell">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Beres Depok — kembali ke atas">
+        <img
+          src="/images/logo.svg"
+          alt="Beres Depok"
+          width="228"
+          height="72"
+          fetchpriority="high"
+        />
+      </a>
+      <nav class="nav" aria-label="Navigasi utama">
+        {
+          navigation.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 13px 14px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .brand img {
+    width: 228px;
+    height: 72px;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-nav);
+  }
+
+  .nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    white-space: nowrap;
+  }
+
+  .nav a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .nav a:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 767px) {
+    .header-inner {
+      flex-wrap: nowrap;
+      gap: 20px;
+      padding-block: 10px;
+    }
+
+    .brand {
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      width: 140px;
+      height: auto;
+    }
+
+    .nav {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 359px) {
+    .header-inner {
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 116px;
+    }
+
+    .nav {
+      gap: 14px;
+      font-size: 13px;
+    }
+  }
+</style>
