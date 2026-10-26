@@ -1,7 +1,7 @@
 // Data bisnis masih mengikuti mockup; verifikasi nomor, alamat, email, dan jam
 // layanan bersama pemilik sebelum rilis.
 export const site = {
-  name: "Beres Depok",
+  name: "Aksa Home",
   whatsappUrl: "https://wa.me/6281234567890",
   phoneDisplay: "0812-3456-7890",
   email: "beresdepok@gmail.com",
@@ -12,7 +12,8 @@ export const site = {
 
 export const navigation = [
   { label: "Layanan", href: "#layanan" },
-  { label: "Cara pesan", href: "#cara-pesan" },
+  { label: "Area layanan", href: "#area" },
+  { label: "Ulasan", href: "#ulasan" },
 ] as const;
 
 export const services = [

@@ -14,10 +14,10 @@ const footerNav = [
     <div class="footer-grid">
       <div class="footer-brand">
         <img
-          src="/images/logo.svg"
-          alt="Beres Depok"
-          width="228"
-          height="72"
+          src="/images/aksa-home-logo-horizontal.svg"
+          alt={site.name}
+          width="660"
+          height="130"
           loading="lazy"
         />
         <p class="footer-description">
@@ -27,7 +27,7 @@ const footerNav = [
       </div>
 
       <div class="footer-contact">
-        <h2 class="footer-heading">Hubungi Beres Depok</h2>
+        <h2 class="footer-heading">Hubungi {site.name}</h2>
         <dl class="contact-list">
           <div class="contact-row">
             <dt>Alamat</dt>
@@ -65,7 +65,7 @@ const footerNav = [
     </div>
 
     <div class="footer-legal">
-      <p>© 2026 Beres Depok</p>
+      <p>© 2026 {site.name}</p>
       <p>{site.serviceArea}</p>
     </div>
   </div>
@@ -82,8 +82,8 @@ const footerNav = [
   }
 
   .footer-brand img {
-    width: 228px;
-    height: 72px;
+    width: 216px;
+    height: auto;
   }
 
   .footer-description {

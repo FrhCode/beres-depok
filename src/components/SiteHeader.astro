@@ -1,16 +1,16 @@
 ---
-import { navigation } from "../lib/site";
+import { navigation, site } from "../lib/site";
 ---
 
 <header class="site-header">
   <div class="shell">
     <div class="header-inner">
-      <a class="brand" href="#top" aria-label="Beres Depok — kembali ke atas">
+      <a class="brand" href="#top" aria-label={`${site.name} — kembali ke atas`}>
         <img
-          src="/images/logo.svg"
-          alt="Beres Depok"
-          width="228"
-          height="72"
+          src="/images/aksa-home-logo-horizontal.svg"
+          alt={site.name}
+          width="660"
+          height="130"
           fetchpriority="high"
         />
       </a>
@@ -29,25 +29,27 @@ import { navigation } from "../lib/site";
   .header-inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 24px;
-    padding-block: 13px 14px;
-    border-bottom: 1px solid var(--border-subtle);
+    min-height: 88px;
+    padding-block: 22px;
+    font-family: var(--font-brand-body);
+    color: var(--brand-wordmark);
   }
 
   .brand img {
-    width: 228px;
-    height: 72px;
+    width: 216px;
+    height: auto;
   }
 
   .nav {
     display: flex;
     align-items: center;
-    gap: 48px;
+    gap: 30px;
+    margin-left: 240px;
     font-size: 14px;
     font-weight: 500;
-    line-height: 1.2;
-    color: var(--text-nav);
+    line-height: 1.35;
+    color: var(--brand-wordmark);
   }
 
   .nav a {
@@ -85,11 +87,18 @@ import { navigation } from "../lib/site";
     outline-offset: 3px;
   }
 
+  @media (max-width: 1199px) {
+    .nav {
+      margin-left: auto;
+    }
+  }
+
   @media (max-width: 767px) {
     .header-inner {
-      flex-wrap: nowrap;
-      gap: 20px;
-      padding-block: 10px;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      padding-block: 16px;
+      min-height: auto;
     }
 
     .brand {
@@ -102,7 +111,10 @@ import { navigation } from "../lib/site";
     }
 
     .nav {
+      flex-basis: 100%;
+      justify-content: space-between;
       gap: 20px;
+      margin-left: 0;
     }
   }
 

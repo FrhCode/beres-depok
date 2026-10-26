@@ -14,12 +14,16 @@
   --rating: #647944;
   --rating-inverse: #c9d5a9;
   --progress-track: #476760;
-  --brand-olive: #8e9e5e;
-  --brand-wordmark: #242528;
+  --brand-olive: #7d895d;
+  --brand-wordmark: #343532;
+  --brand-action: #59653f;
+  --brand-muted: #64665f;
   --text-note: #67776e;
 
   --font-heading: "Manrope", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-brand-body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-brand-display: "DM Serif Display", Georgia, serif;
 
   --gutter: 80px;
   --container: 1280px;
